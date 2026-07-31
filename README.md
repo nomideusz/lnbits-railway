@@ -4,6 +4,10 @@
 
 [LNbits](https://lnbits.com/) is a free, open-source Lightning wallet and accounts system: create wallets for yourself or your users, accept Bitcoin Lightning payments, and extend it with plugins (payment links, paywalls, points of sale, vouchers, and more). This template pairs it with [phoenixd](https://phoenix.acinq.co/server), ACINQ's lightweight self-custodial Lightning node, so you get a complete, working bitcoin payments stack with no blockchain sync and no channel management.
 
+## Screenshots
+
+![LNbits wallet with receive and send](https://raw.githubusercontent.com/nomideusz/lnbits-railway/main/images/01.jpg)
+
 ## About Hosting LNbits
 
 Hosting LNbits normally requires connecting it to a Lightning funding source — often a full bitcoind + LND/CLN stack that needs tens of gigabytes and days of sync. This template uses phoenixd instead: a self-custodial node that offloads chain-watching to ACINQ's infrastructure while your keys stay in your volume. Both services deploy in minutes on Railway's private network — phoenixd is not publicly exposed, LNbits reaches it over the internal network, and the shared API password is auto-generated at deploy time. Each service keeps its state on a persistent volume: your Lightning seed lives in phoenixd's volume, and wallets/accounts live in LNbits' SQLite database.
