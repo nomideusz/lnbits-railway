@@ -1,6 +1,6 @@
 # Deploy and Host LNbits on Railway
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template/lnbits?utm_medium=integration&utm_source=button&utm_campaign=lnbits)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template/lnbits?referralCode=sLjDXb&utm_medium=integration&utm_source=button&utm_campaign=lnbits)
 
 [LNbits](https://lnbits.com/) is a free, open-source Lightning wallet and accounts system: create wallets for yourself or your users, accept Bitcoin Lightning payments, and extend it with plugins (payment links, paywalls, points of sale, vouchers, and more). This template pairs it with [phoenixd](https://phoenix.acinq.co/server), ACINQ's lightweight self-custodial Lightning node, so you get a complete, working bitcoin payments stack with no blockchain sync and no channel management.
 
