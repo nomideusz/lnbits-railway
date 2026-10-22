@@ -32,7 +32,7 @@
       "name": "LNbits",
       "deploy": {
         "startCommand": null,
-        "healthcheckPath": "/api/v1/health",
+        "healthcheckPath": null,
         "restartPolicyType": "ON_FAILURE",
         "restartPolicyMaxRetries": 10
       },
