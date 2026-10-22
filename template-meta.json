@@ -1,0 +1,8 @@
+{
+  "id": "5eea40f9-5fe4-48df-b3d0-325119263464",
+  "name": "LNbits",
+  "description": "Bitcoin Lightning wallet & payments API powered by an ACINQ phoenixd node.",
+  "category": "Other",
+  "image": "https://raw.githubusercontent.com/lnbits/lnbits/main/docs/logos/lnbits.png",
+  "published": true
+}

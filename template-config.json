@@ -1,0 +1,96 @@
+{
+  "buckets": {},
+  "services": {
+    "1db3b609-1325-450e-bd87-f7415f0598f9": {
+      "icon": "https://avatars.githubusercontent.com/u/22757956",
+      "name": "Phoenixd",
+      "deploy": {
+        "startCommand": "",
+        "healthcheckPath": null,
+        "restartPolicyType": "ON_FAILURE",
+        "restartPolicyMaxRetries": 10
+      },
+      "source": {
+        "repo": "https://github.com/two-workspaces/lnbits",
+        "rootDirectory": "/phoenixd"
+      },
+      "variables": {
+        "PHOENIXD_API_PASSWORD": {
+          "isOptional": false,
+          "description": "Auto-generated API password for phoenixd's HTTP API. LNbits references this value \u2014 do not change after first deploy.",
+          "defaultValue": "${{secret(32)}}"
+        }
+      },
+      "volumeMounts": {
+        "1db3b609-1325-450e-bd87-f7415f0598f9": {
+          "mountPath": "/phoenix/.phoenix"
+        }
+      }
+    },
+    "b96ef1b6-deb3-475b-ba39-bade07318587": {
+      "icon": "https://avatars.githubusercontent.com/u/76852049",
+      "name": "LNbits",
+      "deploy": {
+        "startCommand": null,
+        "healthcheckPath": "/api/v1/health",
+        "restartPolicyType": "ON_FAILURE",
+        "restartPolicyMaxRetries": 10
+      },
+      "source": {
+        "image": "lnbits/lnbits:latest"
+      },
+      "variables": {
+        "HOST": {
+          "isOptional": false,
+          "description": "Bind address for the web server.",
+          "defaultValue": "0.0.0.0"
+        },
+        "PORT": {
+          "isOptional": false,
+          "description": "Web server port. Also used by the Railway healthcheck.",
+          "defaultValue": "5000"
+        },
+        "LNBITS_ADMIN_UI": {
+          "isOptional": false,
+          "description": "Enables the superuser admin panel at /admin (first visit to the site creates the superuser).",
+          "defaultValue": "true"
+        },
+        "LNBITS_DATA_FOLDER": {
+          "isOptional": false,
+          "description": "SQLite data directory on the persistent volume.",
+          "defaultValue": "/app/data"
+        },
+        "PHOENIXD_API_ENDPOINT": {
+          "isOptional": false,
+          "description": "phoenixd HTTP API over Railway's private network. Auto-resolved at deploy time.",
+          "defaultValue": "http://${{Phoenixd.RAILWAY_PRIVATE_DOMAIN}}:9740/"
+        },
+        "PHOENIXD_API_PASSWORD": {
+          "isOptional": false,
+          "description": "Reference to Phoenixd's API password \u2014 shared secret, stored once.",
+          "defaultValue": "${{Phoenixd.PHOENIXD_API_PASSWORD}}"
+        },
+        "FUNDING_SOURCE_MAX_RETRIES": {
+          "isOptional": false,
+          "description": "Startup retries while phoenixd builds (exponential backoff, ~4 min total). Without this LNbits silently falls back to VoidWallet on first deploy.",
+          "defaultValue": "9"
+        },
+        "LNBITS_BACKEND_WALLET_CLASS": {
+          "isOptional": false,
+          "description": "Funding source implementation. Static \u2014 this template wires LNbits to phoenixd.",
+          "defaultValue": "PhoenixdWallet"
+        }
+      },
+      "networking": {
+        "serviceDomains": {
+          "<hasDomain>": {}
+        }
+      },
+      "volumeMounts": {
+        "b96ef1b6-deb3-475b-ba39-bade07318587": {
+          "mountPath": "/app/data"
+        }
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@
 
 ## Screenshots
 
-![LNbits wallet with receive and send](https://raw.githubusercontent.com/nomideusz/lnbits-railway/main/images/01.jpg)
+![LNbits wallet with receive and send](https://raw.githubusercontent.com/two-workspaces/lnbits/main/images/01.jpg)
 
 ## About Hosting LNbits
 
@@ -30,7 +30,7 @@ Hosting LNbits normally requires connecting it to a Lightning funding source —
 
 - [LNbits documentation](https://docs.lnbits.org/)
 - [phoenixd documentation](https://phoenix.acinq.co/server)
-- [Template source on GitHub](https://github.com/nomideusz/lnbits-railway)
+- [Template source on GitHub](https://github.com/two-workspaces/lnbits)
 
 ### Implementation Details
 
