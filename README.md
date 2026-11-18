@@ -14,6 +14,8 @@ Hosting LNbits normally requires connecting it to a Lightning funding source —
 
 **Back up your seed.** phoenixd generates a 12-word seed at `/phoenix/.phoenix/seed.dat` on first boot. This is self-custodial software — if you delete the volume without a backup, your funds are gone. Read the file right after your first deploy and store the words somewhere safe.
 
+**Running a deploy older than LNbits 1.7.1? Update now.** Versions before 1.7.0 have a flaw that let attackers steal funds (November 2026), and 1.7.1 rotates LNbits' auth keys. In the LNbits service's Settings, set the source image to `lnbits/lnbits:v1.7.1` and redeploy. Then follow [LNbits' upgrade guidance](https://news.lnbits.com/news/lnbits-1-7-0-security-update): as Super Admin, open Settings → Users and choose **Reset Wallet Keys**, recreate any extension connections (NWC, LNDHub, Bolt Cards, TPOS), and replace the funding-source credential. Here that is `PHOENIXD_API_PASSWORD` in the Phoenixd service's Variables tab: set a new random value and redeploy both services, since LNbits reads the same variable.
+
 ## Common Use Cases
 
 - Accept Lightning payments on a website or store with payment links and LNURL
